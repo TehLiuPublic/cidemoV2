@@ -25,6 +25,7 @@
                 }
 
             }
+
             function deleterow(event) {
                 j$(event).closest('tr').css('background', 'pink');
                 CalculateTot(event);
