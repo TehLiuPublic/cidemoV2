@@ -136,7 +136,7 @@
                 <apex:column headervalue="" styleClass="creditorinfo">
                     <apex:facet name="header">
                         <input style="align:left" type="checkbox" id="selectAllBox" checked="checked"></input>
-                    </apex:facet>$&nbsp;
+                    </apex:facet>&nbsp;
                     <apex:inputCheckbox value="{!data.isSelected}" styleClass="CheckbxClass" />
                     <apex:facet name="footer">Total</apex:facet>
                 </apex:column>
