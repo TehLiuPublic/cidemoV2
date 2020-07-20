@@ -33,7 +33,7 @@
             }
 
             function addrow(event) {
-                // implement this            
+                // implement this later          
             }
 
             j$(document).ready(function () {
@@ -59,6 +59,8 @@
                                 }
                             }
                         });
+                        //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
+                        //j$("#checkedRowcounter").text(lenghtOfchecked);
                     } else {
                         j$(".CheckbxClass").each(function () {
                             if (j$(this).prop('checked') == true) {
@@ -74,6 +76,8 @@
 
                             }
                         });
+                        //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
+                        //j$("#checkedRowcounter").text(lenghtOfchecked);
                     }
                     resetCounts();
                 });
@@ -100,6 +104,8 @@
                             totalB = totalB + balance;
                             j$('#grandTot').text(totalB.toFixed(1));
                         }
+                        //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
+                        //j$("#checkedRowcounter").text(lenghtOfchecked);
                     } else if (j$(this).prop('checked') == false) {
 
                         j$(this).closest('tr').css('background', 'pink');
@@ -110,6 +116,9 @@
                             totalB = totalB - balance;
                             j$('#grandTot').text(totalB.toFixed(1));
                         }
+                        //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
+
+                        //j$("#checkedRowcounter").text(lenghtOfchecked);
                     }
                     resetCounts();
                 });
@@ -172,6 +181,7 @@
             <br/>
             <input type="button" class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton"
                 value="Delete All Unchecked Rows" />
+            <!-- <button class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton" >Delete All Unchecked Rows</button>-->
             <apex:pageBlockButtons location="bottom">
 
 
