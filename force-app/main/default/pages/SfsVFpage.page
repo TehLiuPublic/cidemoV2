@@ -140,7 +140,6 @@
                     <apex:facet name="header">
                         <input style="align:left" type="checkbox" id="selectAllBox" checked="checked"></input>
                     </apex:facet>
-                    &nbsp;&nbsp;
                     <apex:inputCheckbox value="{!data.isSelected}" styleClass="CheckbxClass" />
                     <apex:facet name="footer">Total</apex:facet>
                 </apex:column>
@@ -183,10 +182,7 @@
             <br/>
             <input type="button" class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton"
                 value="Delete All Unchecked Rows" />
-            <!-- <button class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton" >Delete All Unchecked Rows</button>-->
             <apex:pageBlockButtons location="bottom">
-
-
                 <apex:commandButton value="Add a row" onclick="alert('This feature coming soon!'); return false;" id="button" />
             </apex:pageBlockButtons>
         </apex:pageBlock>
