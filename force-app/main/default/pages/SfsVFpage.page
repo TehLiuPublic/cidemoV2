@@ -151,12 +151,13 @@
                     <apex:inputText value="{!data.lastName}" />
                 </apex:column>
                 <apex:column headervalue="Min Pay %">
-                    <apex:inputText value="{!data.minPaymentPercentage}" />
+                    <apex:outputLabel value="{!data.minPaymentPercentage}" />
                 </apex:column>
 
                 <apex:column headervalue="Balance">
                     <apex:inputText value="{!data.balance}" />
                     <apex:facet name="footer">
+                        <span>$&nbsp;</span>
                         <span id='grandTot'>{!grandTotal}</span>
                     </apex:facet>
                 </apex:column>

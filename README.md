@@ -7,6 +7,7 @@
 5. Add Row button(did not implement)
 6. Add Delete button to remove all unchecked rows
 7. Highlight the rows that are unchecked
+8. Display Total of Balance
 
 # Future ENH
 
