@@ -142,13 +142,13 @@
                 </apex:column>
 
                 <apex:column headervalue="Creditor Name">
-                    <apex:inputText value="{!data.creditorName}" />
+                    <apex:outputLabel value="{!data.creditorName}" />
                 </apex:column>
                 <apex:column headervalue="First Name">
-                    <apex:inputText value="{!data.firstName}" />
+                    <apex:outputLabel value="{!data.firstName}" />
                 </apex:column>
                 <apex:column headervalue="Last Name">
-                    <apex:inputText value="{!data.lastName}" />
+                    <apex:outputLabel value="{!data.lastName}" />
                 </apex:column>
                 <apex:column headervalue="Min Pay %">
                     <apex:outputLabel value="{!data.minPaymentPercentage}" />
