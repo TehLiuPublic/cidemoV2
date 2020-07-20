@@ -1,135 +1,128 @@
-<apex:page controller="SfsController" action="{!basicAuthCallout}" standardStylesheets="false" >
-    
+<apex:page controller="SfsController" action="{!basicAuthCallout}" standardStylesheets="false">
+
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
-        <script type="text/javascript" >
-            
-        var j$ = jQuery.noConflict();
-        var numofSelectedbox = 0;
-        
-        function resetCounts() {
-            var lenghtOfchecked = j$("tbody tr td input:checkbox:checked:not('#selectAllBox')").length;
-            j$("#checkedRowcounter").text(lenghtOfchecked);
-            var totalCheckbox = j$("tbody tr td input:checkbox:not('#selectAllBox')").length;
-            j$("#Rowcounter").text(totalCheckbox);            
-        }
-        
-        function CalculateTot() {
-            var inputTxt = j$(this).closest('tr').find("input");
-            if(!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
-                var totalB = parseInt(j$('#grandTot').html());
-                
-                var balance = parseInt(inputTxt[5].value);
-                totalB = totalB - balance;
-                j$('#grandTot').text(totalB.toFixed(1));                                                
-            }                    
-            
-        }        
-        function deleterow(event) {   
-            j$(event).closest('tr').css('background', 'pink');
-            CalculateTot(event);
-            j$(event).closest('tr').remove();
-            resetCounts();
-        }
-        
-        function addrow(event) {
-            // implement this            
-        }
-                    
-        j$( document ).ready(function() {
-            var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-            j$("#checkedRowcounter").text(lenghtOfchecked);
+        <script type="text/javascript">
 
-            j$("#selectAllBox").change(function(){
-                var checked = j$(this).is(':checked');
-                if(checked){
-                    j$(".CheckbxClass").each(function(){
-                        if (j$(this).prop('checked') == false) {
-                            j$(this).prop("checked",true);
-                            j$(this).closest('tr').css('background', 'white');
-                            
-                            var inputTxt = j$(this).closest('tr').find("input");
-                            if(!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
-                                var totalB = parseInt(j$('#grandTot').html());                        
-                                var balance = parseInt(inputTxt[5].value);
-                                
-                                totalB = totalB + balance; 
-                                j$('#grandTot').text(totalB.toFixed(1));
-                            }
-                        }    
-                    });
-                    //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-                    //j$("#checkedRowcounter").text(lenghtOfchecked);
-                }else{
-                    j$(".CheckbxClass").each(function(){
-                      if (j$(this).prop('checked') == true) {  
-                        j$(this).prop("checked",false);
-                        j$(this).closest('tr').css('background', 'pink');  
-                          var inputTxt = j$(this).closest('tr').find("input");
-                          if(!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
-                            var totalB = parseInt(j$('#grandTot').html());
-                            var balance = parseInt(inputTxt[5].value);
-                            totalB = totalB - balance;
-                            j$('#grandTot').text(totalB.toFixed(1));                        
-                          }
-                          
-                      }    
-                    });
-                    //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-                    //j$("#checkedRowcounter").text(lenghtOfchecked);
+            var j$ = jQuery.noConflict();
+            var numofSelectedbox = 0;
+
+            function resetCounts() {
+                var lenghtOfchecked = j$("tbody tr td input:checkbox:checked:not('#selectAllBox')").length;
+                j$("#checkedRowcounter").text(lenghtOfchecked);
+                var totalCheckbox = j$("tbody tr td input:checkbox:not('#selectAllBox')").length;
+                j$("#Rowcounter").text(totalCheckbox);
+            }
+
+            function CalculateTot() {
+                var inputTxt = j$(this).closest('tr').find("input");
+                if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
+                    var totalB = parseInt(j$('#grandTot').html());
+
+                    var balance = parseInt(inputTxt[5].value);
+                    totalB = totalB - balance;
+                    j$('#grandTot').text(totalB.toFixed(1));
                 }
+
+            }
+            function deleterow(event) {
+                j$(event).closest('tr').css('background', 'pink');
+                CalculateTot(event);
+                j$(event).closest('tr').remove();
                 resetCounts();
-            });
-            j$(document).on("click", '#DelAllbutton', function() { 
-                j$(".CheckbxClass").each(function(key, val){
-                    if (j$(this).prop('checked') == false) { 
-                      j$(this).closest('tr').remove();  
+            }
+
+            function addrow(event) {
+                // implement this            
+            }
+
+            j$(document).ready(function () {
+
+                var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
+                j$("#checkedRowcounter").text(lenghtOfchecked);
+
+                j$("#selectAllBox").change(function () {
+                    var checked = j$(this).is(':checked');
+                    if (checked) {
+                        j$(".CheckbxClass").each(function () {
+                            if (j$(this).prop('checked') == false) {
+                                j$(this).prop("checked", true);
+                                j$(this).closest('tr').css('background', 'white');
+
+                                var inputTxt = j$(this).closest('tr').find("input");
+                                if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
+                                    var totalB = parseInt(j$('#grandTot').html());
+                                    var balance = parseInt(inputTxt[5].value);
+
+                                    totalB = totalB + balance;
+                                    j$('#grandTot').text(totalB.toFixed(1));
+                                }
+                            }
+                        });
+                    } else {
+                        j$(".CheckbxClass").each(function () {
+                            if (j$(this).prop('checked') == true) {
+                                j$(this).prop("checked", false);
+                                j$(this).closest('tr').css('background', 'pink');
+                                var inputTxt = j$(this).closest('tr').find("input");
+                                if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
+                                    var totalB = parseInt(j$('#grandTot').html());
+                                    var balance = parseInt(inputTxt[5].value);
+                                    totalB = totalB - balance;
+                                    j$('#grandTot').text(totalB.toFixed(1));
+                                }
+
+                            }
+                        });
                     }
                     resetCounts();
                 });
-                              
-            });
-            
-            j$(document).on("click", 'tbody tr td input:checkbox:not("#selectAllBox")', function() {
-                //console.log('you clicked on reguarl check box');
-                if (j$(this).prop('checked') == true) {
-                    j$(this).closest('tr').css('background', 'white');
-                    
-                    var inputTxt = j$(this).closest('tr').find("input");
-                    if(!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
-                        var totalB = parseInt(j$('#grandTot').html());                        
-                        var balance = parseInt(inputTxt[5].value);
-                        
-                        totalB = totalB + balance; 
-                        j$('#grandTot').text(totalB.toFixed(1));
+                j$(document).on("click", '#DelAllbutton', function () {
+                    j$(".CheckbxClass").each(function (key, val) {
+                        if (j$(this).prop('checked') == false) {
+                            j$(this).closest('tr').remove();
+                        }
+                        resetCounts();
+                    });
+
+                });
+
+                j$(document).on("click", 'tbody tr td input:checkbox:not("#selectAllBox")', function () {
+                    //console.log('you clicked on reguarl check box');
+                    if (j$(this).prop('checked') == true) {
+                        j$(this).closest('tr').css('background', 'white');
+
+                        var inputTxt = j$(this).closest('tr').find("input");
+                        if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
+                            var totalB = parseInt(j$('#grandTot').html());
+                            var balance = parseInt(inputTxt[5].value);
+
+                            totalB = totalB + balance;
+                            j$('#grandTot').text(totalB.toFixed(1));
+                        }
+                    } else if (j$(this).prop('checked') == false) {
+
+                        j$(this).closest('tr').css('background', 'pink');
+                        var inputTxt = j$(this).closest('tr').find("input");
+                        if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
+                            var totalB = parseInt(j$('#grandTot').html());
+                            var balance = parseInt(inputTxt[5].value);
+                            totalB = totalB - balance;
+                            j$('#grandTot').text(totalB.toFixed(1));
+                        }
                     }
-                    //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-                    //j$("#checkedRowcounter").text(lenghtOfchecked);
-                } else if (j$(this).prop('checked') == false) { 
-                   
-                    j$(this).closest('tr').css('background', 'pink');
-                    var inputTxt = j$(this).closest('tr').find("input");
-                    if(!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
-                        var totalB = parseInt(j$('#grandTot').html());
-                        var balance = parseInt(inputTxt[5].value);
-                        totalB = totalB - balance;
-                        j$('#grandTot').text(totalB.toFixed(1));                        
-                    }
-                    //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-                    
-                    //j$("#checkedRowcounter").text(lenghtOfchecked);
-                }
-                resetCounts();
-            });
-        });        
-        </script>        
+                    resetCounts();
+                });
+
+            });        
+        </script>
     </head>
     <apex:slds />
-    <apex:variable value="{!1}" var="rowNum"/>
-    
-    <apex:form >
-        <apex:pageBlock title="Creditor Info:" >
-            <apex:pageBlockTable value="{!jdataList}" var="data" id="creditorrow" onrowmouseover="this.classList.remove('highlight')">   
+    <apex:variable value="{!1}" var="rowNum" />
+
+    <apex:form>
+        <apex:pageBlock title="Creditor Info:">
+            <apex:pageBlockTable value="{!jdataList}" var="data" id="creditorrow" onrowmouseover="this.classList.remove('highlight')">
                 <apex:column headervalue="Action">
                     <button class="slds-button slds-m-around--x-small slds-button_destructive" type="button" onClick="deleterow(this);">Delete</button>
                 </apex:column>
@@ -137,40 +130,55 @@
                     <apex:facet name="header">
                         <input type="checkbox" id="selectAllBox" checked="checked"></input>
                     </apex:facet>
-                    <apex:inputCheckbox value="{!data.isSelected}" styleClass="CheckbxClass"/>                   
-                    <apex:facet name="footer">Total</apex:facet> 
+                    <apex:inputCheckbox value="{!data.isSelected}" styleClass="CheckbxClass" />
+                    <apex:facet name="footer">Total</apex:facet>
                 </apex:column>
-                
-                <apex:column headervalue="Creditor Name" >
+
+                <apex:column headervalue="Creditor Name">
                     <apex:inputText value="{!data.creditorName}" />
                 </apex:column>
-                <apex:column headervalue="First Name" >
-                    <apex:inputText value="{!data.firstName}"/>
-                </apex:column>    
-                <apex:column headervalue="Last Name" >
-                    <apex:inputText value="{!data.lastName}"/>
+                <apex:column headervalue="First Name">
+                    <apex:inputText value="{!data.firstName}" />
                 </apex:column>
-                <apex:column headervalue="Min Pay %"  >                    
-                    <apex:inputText value="{!data.minPaymentPercentage}" />                    
+                <apex:column headervalue="Last Name">
+                    <apex:inputText value="{!data.lastName}" />
                 </apex:column>
-                
-                <apex:column headervalue="Balance"  >                                        
-                    <apex:inputText value="{!data.balance}" />                    
-                    <apex:facet name="footer"><span id='grandTot'>{!grandTotal}</span></apex:facet>
+                <apex:column headervalue="Min Pay %">
+                    <apex:inputText value="{!data.minPaymentPercentage}" />
+                </apex:column>
+
+                <apex:column headervalue="Balance">
+                    <apex:inputText value="{!data.balance}" />
+                    <apex:facet name="footer">
+                        <span id='grandTot'>{!grandTotal}</span>
+                    </apex:facet>
                 </apex:column>
             </apex:pageBlockTable>
-    
-    <strong><b><div>Total Row Count: <span id="Rowcounter">{!rowCount}</span></div></b></strong>
-    <strong><b><div>Check Row Count: <span id="checkedRowcounter"></span></div></b></strong>           
-        <br/><input type="button" class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton" value="Delete All Unchecked Rows" /> 
-        <!-- <button class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton" >Delete All Unchecked Rows</button>-->
+
+            <strong>
+                <b>
+                    <div>Total Row Count:
+                        <span id="Rowcounter">{!rowCount}</span>
+                    </div>
+                </b>
+            </strong>
+            <strong>
+                <b>
+                    <div>Check Row Count:
+                        <span id="checkedRowcounter"></span>
+                    </div>
+                </b>
+            </strong>
+            <br/>
+            <input type="button" class="slds-button slds-m-around--x-small slds-button_destructive" name="DelAllbutton" id="DelAllbutton"
+                value="Delete All Unchecked Rows" />
             <apex:pageBlockButtons location="bottom">
-                
-                
-                <apex:commandButton value="Add a row" onclick="alert('This feature coming soon!'); return false;" id="button" />            
+
+
+                <apex:commandButton value="Add a row" onclick="alert('This feature coming soon!'); return false;" id="button" />
             </apex:pageBlockButtons>
-        </apex:pageBlock> 
-        
+        </apex:pageBlock>
+
     </apex:form>
- 
+
 </apex:page>

@@ -14,7 +14,7 @@ public with sharing class SfsController {
         public Double minPaymentPercentage {get;set;}
         public Double balance {get;set;}
         
-        
+        // Constructor
         public CreditorInfo() {
             isSelected = true;
 
