@@ -117,9 +117,6 @@
                             totalB = totalB - balance;
                             j$('#grandTot').text(totalB.toFixed(1));
                         }
-                        //var lenghtOfchecked = j$('tbody tr td input:checkbox:checked:not("#selectAllBox")').length;
-
-                        //j$("#checkedRowcounter").text(lenghtOfchecked);
                     }
                     resetCounts();
                 });

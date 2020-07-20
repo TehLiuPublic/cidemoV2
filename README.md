@@ -1,3 +1,25 @@
+# Requirement
+
+1. Get Json data from external site
+2. Display it to user in Table
+3. Include checkboxes to select or de-select rows
+4. Keep track of total row count and de-selected rows
+5. Add Row button(did not implement)
+6. Add Delete button to remove all unchecked rows
+7. Highlight the rows that are unchecked
+
+# Future ENH
+
+1. Remove hard corded values and add error checks
+2. Get rid of Action method from VF page and use regular Apex to initialize
+   json data and store it in List
+3. Move all JS code into JS file and include it VF page.
+4. Convert everything in jquery syntax
+
+# Extras
+
+1. Added individual Delete button on each row
+
 # Salesforce App
 
 This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
@@ -12,7 +34,7 @@ The package development model allows you to create self-contained applications o
 
 If you are starting a new project, we recommend that you consider the package development model. To start developing with this model in Visual Studio Code, see [Package Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/package-development-model). For details about the model, see the [Package Development Model](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_dev_model) Trailhead module.
 
-If you are developing against scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI)  to create your project. If you used another command, you might want to start over with that command.
+If you are developing against scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI) to create your project. If you used another command, you might want to start over with that command.
 
 When working with source-tracked orgs, use the commands `SFDX: Push Source to Org` (VS Code) or `sfdx force:source:push` (Salesforce CLI) and `SFDX: Pull Source from Org` (VS Code) or `sfdx force:source:pull` (Salesforce CLI). Do not use the `Retrieve` and `Deploy` commands with scratch orgs.
 
