@@ -1,4 +1,4 @@
-<apex:page controller="SfsController" action="{!basicAuthCallout}" standardStylesheets="false">
+<apex:page controller="SfsController" action="{!basicAuthCallout}" standardStylesheets="false" cache="false">
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
@@ -14,8 +14,8 @@
                 j$("#Rowcounter").text(totalCheckbox);
             }
 
-            function CalculateTot() {
-                var inputTxt = j$(this).closest('tr').find("input");
+            function CalculateTot(event) {
+                var inputTxt = j$(event).closest('tr').find("input");
                 if (!isNaN((inputTxt[5].value)) && (inputTxt[5].value).length != 0) {
                     var totalB = parseInt(j$('#grandTot').html());
 
@@ -27,7 +27,7 @@
             }
 
             function deleterow(event) {
-                j$(event).closest('tr').css('background', 'pink');
+                //j$(event).closest('tr').css('background', 'pink');
                 CalculateTot(event);
                 j$(event).closest('tr').remove();
                 resetCounts();
@@ -127,7 +127,7 @@
     <apex:slds />
     <apex:variable value="{!1}" var="rowNum" />
 
-    <apex:form>
+    <apex:form >
         <apex:pageBlock title="Creditor Info:">
             <apex:pageBlockTable value="{!jdataList}" var="data" id="creditorrow" onrowmouseover="this.classList.remove('highlight')">
                 <apex:column headervalue="Action">
@@ -135,29 +135,30 @@
                 </apex:column>
                 <apex:column headervalue="" styleClass="creditorinfo">
                     <apex:facet name="header">
-                        <input style="align:left" type="checkbox" id="selectAllBox" checked="checked"></input>
-                    </apex:facet>&nbsp;
+                        <input type="checkbox" id="selectAllBox" checked="checked"></input>
+                    </apex:facet>
+                
                     <apex:inputCheckbox value="{!data.isSelected}" styleClass="CheckbxClass" />
                     <apex:facet name="footer">Total</apex:facet>
                 </apex:column>
 
                 <apex:column headervalue="Creditor Name">
-                    <apex:outputLabel value="{!data.creditorName}" />
+                    <apex:inputText value="{!data.creditorName}" />
                 </apex:column>
                 <apex:column headervalue="First Name">
-                    <apex:outputLabel value="{!data.firstName}" />
+                    <apex:inputText value="{!data.firstName}" />
                 </apex:column>
                 <apex:column headervalue="Last Name">
-                    <apex:outputLabel value="{!data.lastName}" />
+                    <apex:inputText value="{!data.lastName}" />
                 </apex:column>
                 <apex:column headervalue="Min Pay %">
-                    <apex:outputLabel value="{!data.minPaymentPercentage}" />
+                    <apex:inputText value="{!data.minPaymentPercentage}" />
                 </apex:column>
 
                 <apex:column headervalue="Balance">
-                    <apex:outputLabel value="{!data.balance}" />
+                    <apex:inputText value="{!data.balance}" />
                     <apex:facet name="footer">
-                        $&nbsp;
+                        
                         <span id='grandTot'>{!grandTotal}</span>
                     </apex:facet>
                 </apex:column>
